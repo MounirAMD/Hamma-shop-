@@ -25,7 +25,7 @@
             border-radius: 15px;
             padding: 20px;
             margin: 1%;
-            box-shadow: 0px 0px 0px rgb(143, 140, 140);
+            box-shadow: 0px 0px 3px rgb(143, 140, 140);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -55,11 +55,29 @@
             margin-bottom: 20px;
             color: rgb(45, 169, 144);
         }
+        .image-hamma{
+            background-color: white;
+            border-radius: 8px;
+            width: 80%;
+            height: 75px;
+            margin-top: 10px;
+        }
     </style>
     <script src="script.js"></script>
 </head>
 <body style="background-color:#EBEDF0 ;">
     
+<center>
+        <div class="image-hamma">
+        <img src="" alt="">
+    </div>
+</center>
+<br>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search ....." oninput="searchByLabel()">
+    </div>
+<br>
     <nav class="nav">
         <center>
             <!-- Give ids to your labels -->
@@ -238,6 +256,26 @@ cardContainer.addEventListener("click", function (event) {
         cardContainer.appendChild(imageElement);
     }
 });
+</script>
+
+
+<script>
+    // Function to filter cards by label
+    function searchByLabel() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach(function (card) {
+            const label = card.querySelector("label");
+            if (label) {
+                if (label.textContent.toLowerCase().includes(searchInput)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        });
+    }
 </script>
 
 </body>
