@@ -51,16 +51,17 @@
 .search-container {
     display: flex;
     align-items: center;
-    background: #ffffff;
+    background: #efecec78;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 5px 10px;
-    transition: background 0.3s, border-color 0.3s; /* Add transitions for both background and border color */
+    transition: background 0.3s, border-color 0.3s , border-width 0.3s ; /* Add transitions for both background and border color */
 }
 
 .search-container:hover {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.78);
     border-color: rgb(45, 169, 144); /* Change the border color on hover */
+    border-width: 2.5px; /* Change the border width on hover (adjust the value as needed) */
 }
 
 .search-container input[type=text] {
@@ -68,6 +69,7 @@
     background: transparent;
     outline: none;
     width: 100%;
+    height: 25px;
     font-size: 16px;
 }
 
