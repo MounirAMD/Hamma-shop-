@@ -1,30 +1,31 @@
 .button-label {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px; /* Add margin to create space between buttons */
     background-color: #3498db;
     color: #fff;
-    font-size: 26px;
+    font-size: 20px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    transition: transform 0.3s; /* Add a transition for the transform property */
+    transition: transform 0.3s;
     overflow: hidden;
 }
 
 .button-label:hover {
-    transform: scale(1.1); /* Scale up by 10% on hover */
+    transform: scale(1.1);
 }
 
 .button-label-alt {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: #ffffff;
     color: #fff;
-    font-size: 26px;
+    font-size: 20px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -43,3 +44,34 @@
     height: 100%;
     object-fit: cover;
 }
+
+
+/* search bar */
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px 10px;
+    transition: background 0.3s, border-color 0.3s; /* Add transitions for both background and border color */
+}
+
+.search-container:hover {
+    background: #ffffff;
+    border-color: rgb(45, 169, 144); /* Change the border color on hover */
+}
+
+.search-container input[type=text] {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.search-container input[type=text]::placeholder {
+    color: #000000;
+}
+
