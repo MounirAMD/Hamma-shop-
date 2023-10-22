@@ -6,6 +6,20 @@
         body{
           font-family: 'IBM Plex Sans Arabic', sans-serif;
         }
+        #resetButton {
+        background-color: rgb(45, 169, 144);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 18px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease-in-out;
+        }
+
+        #resetButton:hover {
+        background-color: rgb(41, 159, 135);
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,7 +113,16 @@
             
         </center>
 
-    </nav> <br>
+    </nav> 
+
+    <center>
+        <button id="resetButton" onclick="resetPage()">
+            <i class="fa-solid fa-backward"></i>
+        </button>
+    </center>
+    
+
+    <br>
     <!-- Display Data Container -->
     <div dir="rtl" id="card-container">
 
@@ -285,6 +308,14 @@ cardContainer.addEventListener("click", function (event) {
         });
     }
 </script>
+
+
+  <script>
+    // Function to reload the page
+    function resetPage() {
+      location.reload();
+    }
+  </script>
 
 </body>
 </html>
