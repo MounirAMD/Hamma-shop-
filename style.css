@@ -1,4 +1,5 @@
 body{
+    background: linear-gradient(#0c1389, #00010b);
 }
 
 button{
@@ -21,7 +22,6 @@ button{
 
 .card {
     border-radius: 8px;
-    background: rgb(41, 206, 134);
     color: white;
     margin: 10px;
     width: 44%; /* Change this to fit smaller screens */
@@ -72,6 +72,7 @@ button{
 
 h3 {
     margin-left: 20px;
+    color: white;
 }
 
 .wrapper2 {
@@ -81,11 +82,11 @@ h3 {
 .card2 {
     float: left;
     border-radius: 8px;
-    background: linear-gradient(#c91e7f, #636be0);
     color: white;
     margin: 10px;
     width: 44%; /* Change this to fit smaller screens */
     flex: 0 0 auto;
+    
 }
 
 @media (min-width: 768px) {
@@ -99,3 +100,4 @@ h3 {
         width: 22%; /* Adjust for desktops */
     }
 }
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
+</head>
+<body>
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+        <div class="bg-dark p-4">
+            <h5 style="color: white;" class="text-body-emphasis h4">Collapsed content</h5>
+            <span class="text-body-secondary">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <br>
+    <center>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search ....." oninput="searchByLabel()">
+        </div>
+    </center>
+    <br>
+    <h3>New Items</h3>
+    <div dir="" class="wrapper" id="card-container1"></div>
+    <h3>Shoes For Man</h3>
+    <center class="optn">
+        <button type="button" class="btn btn-outline-primary">NIKE</button>
+        <button type="button" class="btn btn-outline-secondary">ADIDAS</button>
+        <button type="button" class="btn btn-outline-success">TN</button>
+        <button type="button" class="btn btn-outline-danger">PUMA</button>
+    </center>
+    <div dir="" class="wrapper2" id="card-container"></div>
+    
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBqcvfKofGQ4KSTg1D3UQrb1GKcIjuvGJU",
+            authDomain: "send-food-f92b3.firebaseapp.com",
+            databaseURL: "https://send-food-f92b3-default-rtdb.firebaseio.com",
+            projectId: "send-food-f92b3",
+            storageBucket: "send-food-f92b3.appspot.com",
+            messagingSenderId: "157571988110",
+            appId: "1:157571988110:web:35c1a19ae9241178f8a7df",
+            measurementId: "G-653JW7Q83V"
+        };
+
+        // Initialize Firebase
+        var firebaseApp = firebase.initializeApp(firebaseConfig);
+
+        // Reference to your Firebase database
+        var database = firebase.database();
+        var dataRef = database.ref("your_data_node"); // Replace "your_data_node" with your desired database node
+
+        // Function to display the data as cards
+        function displayDataAsCards(data, containerId) {
+            var cardContainer = document.getElementById(containerId);
+
+            for (var key in data) {
+                var item = data[key];
+                var card = document.createElement("div");
+                card.className = "card2";
+                card.style.backgroundColor = item.className; // Set the background color using the className variable
+
+                var photo = document.createElement("img");
+                photo.className = "card-img-top";
+                photo.src = item.photoURL; // Set the source of the image to the photo URL
+                photo.alt = "...";
+
+                var cardBody = document.createElement("div");
+                cardBody.className = "card-body";
+
+                var cardTitle = document.createElement("h5");
+                cardTitle.className = "card-title";
+                cardTitle.textContent = item.bookName;
+
+                var cardPrice = document.createElement("h6");
+                cardPrice.textContent = item.phoneNumber;
+
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardPrice);
+                card.appendChild(photo);
+                card.appendChild(cardBody);
+                cardContainer.appendChild(card);
+            }
+        }
+
+        // Retrieve data from Firebase and display it as cards in both containers
+        dataRef.once("value").then(function (snapshot) {
+            var data = snapshot.val();
+            displayDataAsCards(data, "card-container1");
+            displayDataAsCards(data, "card-container");
+        });
+    </script>
+</body>
+</html>
