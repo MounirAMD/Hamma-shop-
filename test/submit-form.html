@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Contact Form</title>
+    <style>
+        body {
+            background: #EBEDF0;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+.contact-form-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container h2 {
+    color: #000000;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.contact-form-container h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: #000000;
+    margin: 8px auto 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.contact-form input {
+    height: 50px;
+}
+
+.contact-form textarea {
+    height: 100px;
+}
+
+.contact-form button {
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    background: rgb(26, 171, 113);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button span {
+    margin-left: 10px;
+    transition: margin-left 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: rgb(42, 226, 152);
+}
+
+.contact-form button:hover span {
+    margin-left: 20px;
+}
+
+@media (max-width: 500px) {
+    .contact-form-container {
+        padding: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .contact-form input {
+        height: 40px;
+    }
+
+    .contact-form textarea {
+        height: 80px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="contact-form-container">
+        <h2>Get in touch</h2>
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your E-Mail" required>
+            <textarea name="message" placeholder="Write Message ..." required></textarea>
+            <button type="submit">Submit <span>→</span></button>
+        </form>
+    </div>
+
+
+
+    <!-- Add Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database-compat.js"></script>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC70g6Nw5vMxpkIdIUuP_N5o0MMY7FVpYg",
+            authDomain: "hamma-shop.firebaseapp.com",
+            databaseURL: "https://hamma-shop-default-rtdb.firebaseio.com",
+            projectId: "hamma-shop",
+            storageBucket: "hamma-shop.appspot.com",
+            messagingSenderId: "613919943680",
+            appId: "1:613919943680:web:9f03e383f86787178e3ce5",
+            measurementId: "G-PY3W1T3695"
+        };
+    
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    
+        // Submit form data
+        document.querySelector('.contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            // Get form data
+            const name = document.querySelector('input[name="name"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const message = document.querySelector('textarea[name="message"]').value;
+    
+            // Reference to the database
+            const dbRef = database.ref('contacts/' + Date.now());
+    
+            // Send data to Firebase
+            dbRef.set({
+                name: name,
+                email: email,
+                message: message
+            })
+            .then(() => {
+                alert('Data sent successfully!');
+            })
+            .catch((error) => {
+                alert('Error: ' + error.message);
+            });
+        });
+    </script>
+    
+
+</body>
+</html>
