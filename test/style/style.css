@@ -1,5 +1,5 @@
 body{
-    background: #EBEDF0;
+    background: #ebedf0e0;
 }
 
 button{
@@ -54,7 +54,6 @@ button{
 .search-container:hover {
     background: rgba(255, 255, 255, 0.78);
     border-color: rgb(45, 169, 144); /* Change the border color on hover */
-    border-width: 2.5px; /* Change the border width on hover (adjust the value as needed) */
 }
 
 .search-container input[type=text] {
@@ -77,6 +76,8 @@ h3 {
 
 .wrapper2 {
     padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .card2 {
@@ -87,7 +88,7 @@ h3 {
     width: 44%; /* Change this to fit smaller screens */
     flex: 0 0 auto;    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    min-height: 250px; /* Adjust this value as needed */
     
 }
 
@@ -107,3 +108,8 @@ strong{
     color: rgb(51, 203, 147);
 }
 
+.card2 .card-title {
+    white-space: normal; /* Allow the text to wrap to the next line */
+    overflow: hidden; /* Hide any overflowing content */
+    text-overflow: ellipsis; /* Optional: Add ellipsis (...) for overflowed text */
+}
